@@ -1,0 +1,67 @@
+import /init.recovery.qcom_decrypt.rc
+
+on init
+    exec u:r:recovery:s0 -- /system/bin/resetprop ro.boot.verifiedbootstate orange
+
+on fs
+    write /sys/kernel/sdhci_msm/add_host 1
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+
+on boot
+    mkdir /firmware
+    wait /dev/block/platform/soc/7824900.sdhci/by-name/modem
+    mount vfat /dev/block/platform/soc/7824900.sdhci/by-name/modem /firmware ro
+    start qseecomd
+    exec u:r:recovery:s0 -- /system/bin/sleep 1s
+    start keymaster-3-0
+    start keymaster-3-0-qti
+
+on boot
+    start health-hal-2-1
+
+on boot
+    write /sys/bus/cpu/devices/cpu0/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu1/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu2/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu3/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu4/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu5/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu6/cpufreq/scaling_governor conservative
+    write /sys/bus/cpu/devices/cpu7/cpufreq/scaling_governor conservative
+
+    write /sys/bus/cpu/devices/cpu2/online 0
+    write /sys/bus/cpu/devices/cpu3/online 0
+    write /sys/bus/cpu/devices/cpu4/online 0
+    write /sys/bus/cpu/devices/cpu5/online 0
+    write /sys/bus/cpu/devices/cpu6/online 0
+    write /sys/bus/cpu/devices/cpu7/online 0
+
+on property:ro.boot.bootdevice=7864900.sdhci
+    exec u:r:recovery:s0 -- /system/bin/resetprop ro.gsid.image_running 1
+
+# Boot control
+on boot
+    start boot-hal-1-1
+
+# Decryption
+on init
+    exec u:r:recovery:s0 -- /system/bin/detect-fbe.sh
+
+# DT2W
+on init
+    write /proc/touchpanel/enable_dt2w 1
+
+# HVDCP
+service hvdcp_opti /system/bin/hvdcp_opti
+    user root
+    group root
+    disabled
+    seclabel u:r:recovery:s0
+
+on boot
+    start hvdcp_opti
+
+# Workaround timestamp check
+on init
+    exec u:r:recovery:s0 -- /system/bin/workaround-timestamp-check.sh
