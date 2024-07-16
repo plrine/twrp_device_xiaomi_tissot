@@ -50,7 +50,7 @@ on init
 
 # DT2W
 on init
-    write /proc/touchpanel/enable_dt2w 1
+    write /proc/touchpanel/wakeup_gesture 1
 
 # HVDCP
 service hvdcp_opti /system/bin/hvdcp_opti
