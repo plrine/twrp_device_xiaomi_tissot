@@ -29,6 +29,10 @@
 /system_root    ext4    /dev/block/bootdevice/by-name/system                    flags=display="System";fsflags="discard";slotselect;wipeingui
 /system_image   emmc    /dev/block/bootdevice/by-name/system                    flags=display="System";backup=1;flashimg=1;slotselect
 
+# vendor
+/vendor         ext4    /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor";fsflags="discard";slotselect;wipeingui
+/vendor_image   emmc    /dev/block/bootdevice/by-name/vendor                    flags=display="Vendor";backup=1;flashimg=1;slotselect
+
 # Removable storage
 /sdcard1        auto    /dev/block/mmcblk1p1                                    flags=display="MicroSD";removable;storage;wipeingui
 /usb_otg        auto    /dev/block/sda1             /dev/block/sda              flags=display="USB OTG";removable;storage;wipeingui
