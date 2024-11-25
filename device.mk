@@ -55,6 +55,9 @@ PRODUCT_PACKAGES += \
     android.hardware.keymaster@3.0-impl \
     android.hardware.keymaster@3.0-service
 
+PRODUCT_PACKAGES += \
+    android.system.keystore2
+
 PRODUCT_COPY_FILES += \
     $(OUT_DIR)/target/product/tissot/system/lib64/libkeymaster3device.so:$(TARGET_COPY_OUT_RECOVERY)/root/system/lib64/libkeymaster3device.so \
     $(OUT_DIR)/target/product/tissot/vendor/bin/hw/android.hardware.keymaster@3.0-service:$(TARGET_COPY_OUT_RECOVERY)/root/system/bin/android.hardware.keymaster@3.0-service \
