@@ -8,6 +8,9 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/twrp_tissot.mk
 
 COMMON_LUNCH_CHOICES := \
+    twrp_tissot-ap2a-user \
+    twrp_tissot-ap2a-userdebug \
+    twrp_tissot-ap2a-eng \
     twrp_tissot-user \
     twrp_tissot-userdebug \
     twrp_tissot-eng
