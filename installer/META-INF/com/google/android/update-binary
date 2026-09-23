@@ -64,6 +64,7 @@ for slot in _a _b; do
 
     # boot.img header cmdline remove skip_override (flar2 patch)
     sed -i "s|$(grep '^cmdline=' header | cut -d= -f2-)|$(grep '^cmdline=' header | cut -d= -f2- | sed -e 's/skip_override//' -e 's/  */ /g' -e 's/[ \t]*$//')|" header;
+    grep -q 'androidboot.usbconfigfs=true' header || sed -i '/^cmdline=/ s/$/ androidboot.usbconfigfs=true/' header;
 
     cp -f $recoverycpio ramdisk.cpio;
     $tool repack boot.img || abort "Failed to repack image!";
