@@ -51,6 +51,7 @@ on init
 # DT2W
 on init
     write /proc/touchpanel/wakeup_gesture 1
+    write /proc/sys/dev/xiaomi_msm8953_touchscreen/double_tap 1
 
 # HVDCP
 service hvdcp_opti /system/bin/hvdcp_opti
