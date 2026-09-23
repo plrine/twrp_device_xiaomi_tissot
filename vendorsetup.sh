@@ -8,8 +8,8 @@
 export TARGET_ARCH="arm64"
 
 # Maintainer details
-export OF_MAINTAINER="Raya Mahardika"
-export FOX_BUILD_TYPE="Unofficial"
+export OF_MAINTAINER="rypl"
+export FOX_BUILD_TYPE="Enchanted"
 
 # Device identification
 export FOX_AB_DEVICE=1

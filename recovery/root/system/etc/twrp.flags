@@ -5,6 +5,7 @@
 
 # Data
 /data           ext4    /dev/block/bootdevice/by-name/userdata                  flags=encryptable=footer;fsflags="discard"
+/frp            ext4    /dev/block/bootdevice/by-name/config                    flags=display="FRP";wipeingui
 /metadata       ext4    /dev/block/bootdevice/by-name/logdump                   flags=display="Metadata";fsflags="discard"
 
 # Modem

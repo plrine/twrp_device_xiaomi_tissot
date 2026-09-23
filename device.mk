@@ -45,6 +45,10 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/manifest.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest.xml \
     $(DEVICE_PATH)/recovery/root/vendor/etc/vintf/keymaster-3-0.xml:$(TARGET_COPY_OUT_RECOVERY)/root/vendor/etc/vintf/manifest/keymaster-3-0.xml
 
+# Theme
+PRODUCT_COPY_FILES += \
+    bootable/recovery/gui/theme/portrait_hdpi/themes/styles/Dark.xml:$(TARGET_COPY_OUT_RECOVERY)/root/twres/themes/style.xml
+
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
