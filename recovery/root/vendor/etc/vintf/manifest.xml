@@ -4,7 +4,7 @@
         manifest_ab.xml
         keymaster.xml
 -->
-<manifest version="2.0" type="device" target-level="3">
+<manifest version="2.0" type="device" target-level="5">
     <hal format="hidl">
         <name>android.hardware.audio</name>
         <transport>hwbinder</transport>
@@ -683,4 +683,5 @@
     <sepolicy>
         <version>30.0</version>
     </sepolicy>
+    <kernel target-level="5"/>
 </manifest>
