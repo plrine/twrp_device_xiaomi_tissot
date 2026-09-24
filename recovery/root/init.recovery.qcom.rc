@@ -13,6 +13,8 @@ on fs
     mkdir /firmware 0771 system system
     wait /dev/block/bootdevice/by-name/modem 1
     mount vfat /dev/block/bootdevice/by-name/modem /firmware ro
+    symlink /firmware /vendor/firmware_mnt
+    symlink /firmware /firmware_mnt
 
 on boot
     start health-hal-2-1
