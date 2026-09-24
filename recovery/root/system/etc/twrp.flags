@@ -4,7 +4,7 @@
 /boot           emmc    /dev/block/bootdevice/by-name/boot                      flags=slotselect
 
 # Data
-/data           ext4    /dev/block/bootdevice/by-name/userdata                  flags=encryptable=footer;fsflags="discard"
+/data           f2fs    /dev/block/bootdevice/by-name/userdata                  flags=fileencryption=aes-256-xts:aes-256-cts:v2;fsflags="discard"
 /frp            ext4    /dev/block/bootdevice/by-name/config                    flags=display="FRP";wipeingui
 /metadata       ext4    /dev/block/bootdevice/by-name/logdump                   flags=display="Metadata";fsflags="discard"
 

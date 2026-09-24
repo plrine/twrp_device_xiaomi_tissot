@@ -45,8 +45,8 @@ on boot
     start boot-hal-1-1
 
 # Decryption
-on init
-    exec u:r:recovery:s0 -- /system/bin/detect-fbe.sh
+on boot
+    start prepdecrypt
 
 # DT2W
 on init
