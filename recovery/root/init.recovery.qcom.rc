@@ -2,6 +2,7 @@ import /init.recovery.qcom_decrypt.rc
 
 on init
     exec u:r:recovery:s0 -- /system/bin/resetprop ro.boot.verifiedbootstate orange
+    setprop prepdecrypt.setpatch true
 
 on fs
     write /sys/kernel/sdhci_msm/add_host 1
