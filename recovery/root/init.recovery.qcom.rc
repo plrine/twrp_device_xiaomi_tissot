@@ -7,6 +7,7 @@ on fs
     write /sys/kernel/sdhci_msm/add_host 1
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    symlink /dev/block/bootdevice/by-name/config /dev/block/bootdevice/by-name/frp
 
 on boot
     mkdir /firmware
