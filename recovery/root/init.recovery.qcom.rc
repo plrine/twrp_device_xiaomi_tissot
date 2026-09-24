@@ -8,15 +8,10 @@ on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
     symlink /dev/block/bootdevice/by-name/config /dev/block/bootdevice/by-name/frp
-
-on boot
-    mkdir /firmware
-    wait /dev/block/platform/soc/7824900.sdhci/by-name/modem
-    mount vfat /dev/block/platform/soc/7824900.sdhci/by-name/modem /firmware ro
-    start qseecomd
-    exec u:r:recovery:s0 -- /system/bin/sleep 1s
-    start keymaster-3-0
-    start keymaster-3-0-qti
+    symlink /dev/block/bootdevice/by-name/modem${ro.boot.slot_suffix} /dev/block/bootdevice/by-name/modem
+    mkdir /firmware 0771 system system
+    wait /dev/block/bootdevice/by-name/modem 1
+    mount vfat /dev/block/bootdevice/by-name/modem /firmware ro
 
 on boot
     start health-hal-2-1
