@@ -40,7 +40,7 @@ export OF_DEFAULT_KEYMASTER_VERSION="3.0"
 # Partitions, Storage & Formatting
 export OF_WIPE_METADATA_AFTER_DATAFORMAT=1
 export OF_UNBIND_SDCARD_F2FS=1
-export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;/vendor_image;"
+export OF_QUICK_BACKUP_LIST="/boot;/data;/system_image;"
 export OF_ENABLE_FRP_ADDON=1
 
 # Binaries and tools
